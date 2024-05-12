@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Booking Website</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css"> <!-- Custom CSS file -->
+    <style>
+        /* Style for the background video */
+        #bg-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Ensure the video covers the entire viewport */
+            z-index: -1; /* Place the video behind other content */
+            /* filter: blur(40px); */
+            filter: opacity(40%);
+        }
+    </style>
+</head>
+<body>
+    <video autoplay muted loop id="bg-video">
+        <source src="videofiles/Rounded_Animation.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    
+    <header id="header">
+        <!-- Header content goes here -->
+    </header>
+
+    <main>
+    
+
+        <div class="container py-5" id="nowShowingCatalog">
+            <h2 class="mb-4" style="color: #ff6b6b;">Now Showing</h2>
+            <div class="row" id="movie-cards">
+                <!-- Movie cards will be dynamically generated here -->
+            </div>
+        </div>
+
+        <div class="container" id="theaterLocations">
+            <h2 class="mb-4" style="color: #ff6b6b;">Theater Locations</h2>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">MovieTime Theater 1</h5>
+                            <p class="card-text">Location: Pune</p>
+                            <p class="card-text">Contact: 123-456-7890</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Add more col-md-4 divs here for additional theater locations -->
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">MovieTime Theater 2</h5>
+                            <p class="card-text">Location: Mumbai</p>
+                            <p class="card-text">Contact: 123-456-7890</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">MovieTime Theater 3</h5>
+                            <p class="card-text">Location: Hyderabad</p>
+                            <p class="card-text">Contact: 123-456-7890</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer id="footer">
+        <!-- Footer content will be dynamically loaded here -->
+    </footer>
+
+    <script src="js/header_carousel_footer.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>

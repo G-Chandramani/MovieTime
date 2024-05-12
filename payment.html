@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Ticket Booking - Payment</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Your internal CSS styles go here */
+        main {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            background-color:transparent;
+        }
+        html{
+            height: 100%;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+        }
+        .payment-form {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f7f7f7; /* Light gray background */
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top: 50px;
+        }
+        .form-group label {
+            font-weight: bold;
+            color: #333; /* Dark gray text */
+        }
+        .form-control {
+            margin-bottom: 15px;
+            background-color: #fff; /* White input field */
+        }
+        .btn-primary {
+            background-color: #ff6b6b; /* Red button color */
+            border-color: #ff6b6b; /* Red button border color */
+            color: #fff; /* White text color */
+        }
+        .btn-primary:hover {
+            background-color: #ff3f3f; /* Darker red on hover */
+            border-color: #ff3f3f; /* Darker red border on hover */
+        }
+        .summary {
+            background-color: #fff; /* White background */
+            padding: 15px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .summary h4 {
+            margin-bottom: 10px;
+            color: #333; /* Dark gray text */
+        }
+        #total-price {
+            color: #ff6b6b; /* Red text for total price */
+            font-weight: bold;
+        }#bg-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Ensure the video covers the entire viewport */
+            z-index: -1; /* Place the video behind other content */
+            /* filter: blur(40px); */
+            filter: opacity(40%);
+        }
+    </style>
+</head>
+<body>
+    <video autoplay muted loop id="bg-video">
+        <source src="videofiles/Rounded_Animation.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    <header id="header"></header>
+<main>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <div class="payment-form">
+                    <h2 class="text-center mb-4" style="color: #ff6b6b;">Payment</h2>
+                    <!-- Summary section -->
+                    <div class="summary">
+                        <h4>Total Charge</h4>
+                        <p>Total Price: <span id="total-price">0 rs</span></p>
+                    </div>
+                    <!-- Payment form -->
+                    <form id="payment-form">
+                        <div class="form-group">
+                            <label for="card-number">Card Number (16 digits)</label>
+                            <input type="text" class="form-control" id="card-number" placeholder="Enter card number" pattern="[0-9]*" maxlength="16" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="expiry-date">Expiry Date (MM/YY)</label>
+                            <input type="text" class="form-control" id="expiry-date" placeholder="MM/YY" maxlength="5" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="cvv">CVV (3 digits)</label>
+                            <input type="text" class="form-control" id="cvv" placeholder="CVV" pattern="\d{3}" maxlength="3" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">Make Payment</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+    <footer id="footer">
+        
+    </footer>
+
+    <script src="js/header_carousel_footer.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const totalPrice = JSON.parse(localStorage.getItem("totalPrice"));
+            const totalPriceElement = document.getElementById("total-price");
+            totalPriceElement.textContent = `${totalPrice} rs`;
+
+            document.getElementById("expiry-date").addEventListener("input", function() {
+                const input = this.value;
+                if (input.length === 2 && !input.includes("/")) {
+                    this.value = input + "/";
+                }
+            });
+
+            document.getElementById("payment-form").addEventListener("submit", function(event) {
+                event.preventDefault(); // Prevent the form from submitting
+
+                // Example: Validate form fields
+                var cardNumber = document.getElementById("card-number").value;
+                var expiryDate = document.getElementById("expiry-date").value;
+                var cvv = document.getElementById("cvv").value;
+
+                // Example: Perform validation checks (you can customize this)
+                if (cardNumber.trim() === "" || expiryDate.trim() === "" || cvv.trim() === "") {
+                    alert("Please fill in all fields.");
+                    return;
+                }
+
+                // Prompt for OTP
+                var otp = prompt("Enter OTP (4 digits):");
+
+                // Example: Perform AJAX request to handle payment (you can customize this)
+                // Here, you would typically send the payment data to your server for processing
+                // Upon successful payment, redirect the user to the ticket page
+                if (otp) {
+                    alert("Payment Successful!");
+                    const urlParams = new URLSearchParams(window.location.search);
+                    const movieName = urlParams.get('movie');
+                    window.location.href = `ticket.html?movie=${movieName}`;
+                } else {
+                    alert("Payment failed. Please try again.");
+                }
+            });
+        });
+    </script>
+</body>
+</html>

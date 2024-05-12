@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ticket Page</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f3f4f6;
+        }
+        main {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            background-color: transparent;
+        }
+        html{
+            height: 100%;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .container {
+            background-color: #ccc;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            padding: 20px 20px;
+            margin: 20px 20px;
+        }
+
+        .ticket-info {
+            margin-top: 30px;
+        }
+
+        .ticket-info p {
+            margin: 10px 0;
+            font-size: 18px;
+            color: #495057;
+        }
+
+        .ticket-info li {
+            font-size: 16px;
+            color: #6c757d;
+            margin-left: 20px;
+        }
+
+        .qr-code {
+            margin-top: 30px;
+        }
+
+        .qr-code img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        footer {
+            background-color: #343a40;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+            width: 100%;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+        }
+        #bg-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Ensure the video covers the entire viewport */
+            z-index: -1; /* Place the video behind other content */
+            filter: opacity(40%);
+        }
+    </style>
+</head>
+<body>
+    <video autoplay muted loop id="bg-video">
+        <source src="videofiles/Rounded_Animation.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    <header id="header" ></header>
+    <main>
+    <div class="container">
+        <h1 class="text-center mb-4" style="color: #ff6b6b;">Ticket</h1>
+        <div class="ticket-info">
+            <p style="color: #ff6b6b;">Thank you for booking!</p>
+            <p>Here are your ticket details:</p>
+            <ul class="list-group">
+                <li class="list-group-item"><strong id="movie-name">Movie:</strong></li>
+                <li class="list-group-item"><strong>Day:</strong> Today</li>
+                <li class="list-group-item"><strong>Time:</strong> 7:00 PM</li>
+                
+                <ul id="ticket-seats-list" class="list-group"></ul>
+            </ul>
+        </div>
+        <div style="text-align: center;">
+            <img src="images/qr.png" alt="QR CODE" width="15%" height="15%" style="position: relative;">
+        </div>
+        <!-- <div class="qr-code">
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://example.com" alt="QR Code">
+            <img src="images/qr.png" alt="QR CODE" width="15%" height="15%" style="position: relative;">
+        </div> -->
+    </div>
+</main>
+    <footer id="footer">
+        <p>Footer content goes here</p>
+    </footer>
+
+    <script>
+        // Retrieve selected seats from local storage
+        const selectedSeats = JSON.parse(localStorage.getItem('selectedSeats'));
+    
+        // Add selected seats to the ticket page
+        const ticketSeatsList = document.getElementById('ticket-seats-list');
+        const bookedSeatsText = selectedSeats.map(seat => seat.replace('seat-', ''));
+        const li = document.createElement('li');
+        li.textContent = `Booked Seat No: ${bookedSeatsText.join(', ')}`;
+        li.className = 'list-group-item';
+        ticketSeatsList.appendChild(li);
+    
+        // Retrieve movie name from query parameter
+        const urlParams = new URLSearchParams(window.location.search);
+        const movieName = urlParams.get('movie');
+        document.getElementById('movie-name').textContent = `Movie: ${movieName}`;
+    </script>
+    
+    
+    <!-- Bootstrap JS -->
+    <script src="js/header_carousel_footer.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
