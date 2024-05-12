@@ -31,38 +31,44 @@ const movieData = [
         title: "Boonie Bears: Mumma Ki Khoj",
         genre: "Action",
         showtimes: "1:00 PM, 3:30 PM, 7:00 PM",
-        image: "images/mamakikhoj.avif"
+        image: "images/mamakikhoj.avif",
+        link: "../moviepages/bunny.html"
     },
     {
         title: "Bade Miyan Chote Miyan",
         genre: "Action, Comedy, Thriller",
         showtimes: "1:00 PM, 3:30 PM, 7:00 PM",
-        image: "images/bdemiyachotemiya.avif"
+        image: "images/bdemiyachotemiya.avif",
+        link: "../moviepages/bademiyan.html"
     },
     {
         title: "Tipppsy",
         genre: "Drama, Thiller",
         showtimes: "1:00 PM, 3:30 PM, 7:00 PM",
-        image: "images/tippsy.avif"
+        image: "images/tippsy.avif",
+        link: "../moviepages/tipppsy.html"
     },  
     {
         title: "Madgaon Express",
         genre: "Comedy, Drama",
         showtimes: "1:00 PM, 3:30 PM, 7:00 PM",
-        image: "images/madgaoexpress.avif"
+        image: "images/madgaoexpress.avif",
+        link: "../moviepages/madgaon.html"
     },
     {
         title: "Prathinidhi 2",
         genre: "Drama,Political,Thriller",
         showtimes: "1:00 PM, 3:30 PM, 7:00 PM",
-        image: "images/prathinidhi2.avif"
+        image: "images/prathinidhi2.avif",
+        link: "../moviepages/Prathinidhi2.html"
         
     },
     {
         title: "Tarot",
         genre: "Horror, Thriller",
         showtimes: "1:00 PM, 3:30 PM, 7:00 PM",
-        image: "images/tarot.avif"
+        image: "images/tarot.avif",
+        link: "../moviepages/Tarot.html"
     }
     
     // Add more movie data here
