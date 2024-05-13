@@ -1,5 +1,5 @@
-# MovieTime
-Movie Booking System
+# MovieTime Ticket Booking System
+
 User Management:
 Registration: Allow users to create accounts with basic information like name, email, and password.
 Login: Authenticate users to access the booking functionalities.
